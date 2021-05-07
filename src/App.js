@@ -1,13 +1,25 @@
 import "./App.css";
+import { Route, Switch} from "react-router-dom";
+import {ProtectedRoute, Navbarr} from './components'
+import {HomePage, AuthPage,FourOhFourPage} from './pages'
+import {Container} from "react-bootstrap"
 
-import Navbar from "./components/Navbar";
+
+
+
 
 function App() {
   return (
-      <div className="App">
-        <Navbar />
-        <h1>Coderbook</h1>
-      </div>
+   <div>  <Navbarr/> 
+    
+    <Container>
+    <Switch>
+    <Route exact path={`/login`} component={AuthPage} />
+    <ProtectedRoute exact path={`/`} component={HomePage} />
+    <Route path={`/*`} component={FourOhFourPage} />
+  </Switch>
+  </Container>
+  </div>
   );
 }
 

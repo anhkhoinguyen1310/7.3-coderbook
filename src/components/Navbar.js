@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 import logo from "../img/logo.png";
 
-export default function Navbarr() {
+function Navbarr() {
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -45,3 +45,4 @@ export default function Navbarr() {
     </div>
   );
 }
+export {Navbarr}

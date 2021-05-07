@@ -14,8 +14,16 @@ const authReducer = (state = initialState, action) => {
       case types.REGISTER_REQUEST: 
       return{
           ...state,
-          loading: true
+          loading: true,
       };
+      case types.REGISTER_SUCCESS: 
+      return{
+        ...state,
+        loading: false, 
+        email: payload.email,
+        isAuthenticated: true,
+        redirectToHomePage: true,
+    };
     default:
       return state;
   } 

@@ -5,9 +5,6 @@ import {HomePage, AuthPage,FourOhFourPage} from './pages'
 import {Container} from "react-bootstrap"
 
 
-
-
-
 function App() {
   return (
    <div>  <Navbarr/> 

@@ -2,20 +2,23 @@ import { Form, Button } from "react-bootstrap"
 import {useState} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {authActions} from "../redux/actions"
+import {Redirect} from 'react-router-dom'
 
 function AuthPage() {
     const dispatch = useDispatch ()
-    const {auth} = useSelector(state => state )
+    const {auth} = useSelector((state) => state )
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
 function onSubmit (e) 
 {
     e.preventDefault()
-    dispatch(authActions.register())
+    dispatch(authActions.register({ email, password }))
 }
 if (auth.loading) return <h1> Registering... </h1>
-    return (
+if (auth.redirectToHomePage) return <Redirect to = '/'/>
+
+return (
         <div>
             <Form onSubmit = {onSubmit}>
                 <Form.Group controlId="formBasicEmail">
@@ -31,7 +34,10 @@ if (auth.loading) return <h1> Registering... </h1>
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control 
+                    type="password" 
+                    placeholder="Password" 
+                    onChange={(e) => setPassword(e.target.value)}/>
                 </Form.Group>
 
                 <Button variant="primary" type="submit">

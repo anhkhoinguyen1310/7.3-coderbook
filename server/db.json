@@ -21,6 +21,13 @@
       "fristName": "Khoi",
       "email": "khoi@coder.com",
       "id": 2
+    },
+    {
+      "email": {
+        "email": "fff@gmail.com",
+        "password": "ree"
+      },
+      "id": 3
     }
   ],
   "posts": [

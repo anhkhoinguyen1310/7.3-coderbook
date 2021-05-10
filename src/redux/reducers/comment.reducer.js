@@ -11,9 +11,10 @@ const commentReducer = (state = initialState, action) => {
 
     switch (type) {
             case types.CREATE_COMMENT_REQUEST:
-                return {...state}
+                return {...state,
+                    comment: payload}
             case types.CREATE_COMMENT_FAILURE:
-                return {...state}
+                return {...state, }
         default:
         return state;
     }

@@ -10,7 +10,6 @@ const Post = ({ post }) => {
     const [commentBody, setCommentBody] = useState()
 
     const onCreateComment = () => {
-        // dispatch(postActions.createPostComment(post, commentBody))
         dispatch(commentActions.createComment(post, commentBody))
         setCommentBody("")
     }
@@ -31,15 +30,11 @@ const Post = ({ post }) => {
                     <Card.Text>{post.createdAt}</Card.Text>
                 </Row>
                 <Row className="d-flex flex-column">
-                    {post.comments.map(c => {
+                    {post.comments && post.comments.map(c => {
                         return <h5>{c.body}</h5>
                     })}
                 </Row>
                 <Row>
-                    <Col lg={4}>
-                        <Button onClick={onCreateReaction}>Like</Button>
-                        <Button>Dislike</Button>
-                    </Col>
                     <Col lg={8}>
                         <input style={{ width: 500 }} value={commentBody} onChange={(e) => setCommentBody(e.target.value)}>
                         </input>
@@ -55,7 +50,7 @@ const Post = ({ post }) => {
 
 const HomePage = () => {
 
-    const { loading, error, posts } = useSelector(reduxStoreState => reduxStoreState.post)
+    const {loading, error, posts} = useSelector(reduxStoreState => reduxStoreState.posts)
     const dispatch = useDispatch()
 
     useEffect(() => {
